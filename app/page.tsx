@@ -269,6 +269,20 @@ export default function Home() {
           fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700,
         }}>
           Abrir o Guia Interativo
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '32px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+  <a href="/eventos" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
+    🎭 Eventos
+  </a>
+  <a href="/galeria" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
+    📸 Galeria
+  </a>
+  <a href="/como-chegar" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
+    🗺️ Como Chegar
+  </a>
+  <a href="/historia" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
+    📖 História
+  </a>
+</div>
           <svg width="18" height="8" viewBox="0 0 18 8" fill="none">
             <path d="M0 4H16M13 1L16 4L13 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
