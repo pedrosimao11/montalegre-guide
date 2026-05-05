@@ -1,3 +1,4 @@
+import Link from "next/link";
 "use client";
 // ============================================================
 // Página Inicial — Montalegre
@@ -269,24 +270,78 @@ export default function Home() {
           fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", fontWeight: 700,
         }}>
           Abrir o Guia Interativo
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '32px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-  <a href="/eventos" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
-    🎭 Eventos
-  </a>
-  <a href="/galeria" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
-    📸 Galeria
-  </a>
-  <a href="/como-chegar" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
-    🗺️ Como Chegar
-  </a>
-  <a href="/historia" style={{ backgroundColor: '#1a1a1a', border: '1px solid #333', borderRadius: '8px', padding: '16px', textAlign: 'center', color: 'white', textDecoration: 'none' }}>
-    📖 História
-  </a>
-</div>
           <svg width="18" height="8" viewBox="0 0 18 8" fill="none">
             <path d="M0 4H16M13 1L16 4L13 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
         </Link>
+
+        {/* ══════════ NOVOS BOTÕES (AQUI FORA, NO SÍTIO CERTO) ══════════ */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '16px',
+          marginTop: '48px',
+          maxWidth: '600px',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }}>
+          <Link href="/eventos" style={{
+            backgroundColor: 'rgba(201,169,110,0.08)',
+            border: '1px solid rgba(201,169,110,0.2)',
+            borderRadius: '4px',
+            padding: '14px 20px',
+            textAlign: 'center',
+            color: '#f0ebe2',
+            textDecoration: 'none',
+            fontSize: '13px',
+            letterSpacing: '0.05em',
+            transition: 'all 0.3s ease'
+          }}>
+            🎭 Eventos & Festivais
+          </Link>
+          <Link href="/galeria" style={{
+            backgroundColor: 'rgba(201,169,110,0.08)',
+            border: '1px solid rgba(201,169,110,0.2)',
+            borderRadius: '4px',
+            padding: '14px 20px',
+            textAlign: 'center',
+            color: '#f0ebe2',
+            textDecoration: 'none',
+            fontSize: '13px',
+            letterSpacing: '0.05em',
+            transition: 'all 0.3s ease'
+          }}>
+            📸 Galeria de Fotos
+          </Link>
+          <Link href="/como-chegar" style={{
+            backgroundColor: 'rgba(201,169,110,0.08)',
+            border: '1px solid rgba(201,169,110,0.2)',
+            borderRadius: '4px',
+            padding: '14px 20px',
+            textAlign: 'center',
+            color: '#f0ebe2',
+            textDecoration: 'none',
+            fontSize: '13px',
+            letterSpacing: '0.05em',
+            transition: 'all 0.3s ease'
+          }}>
+            🗺️ Como Chegar
+          </Link>
+          <Link href="/historia" style={{
+            backgroundColor: 'rgba(201,169,110,0.08)',
+            border: '1px solid rgba(201,169,110,0.2)',
+            borderRadius: '4px',
+            padding: '14px 20px',
+            textAlign: 'center',
+            color: '#f0ebe2',
+            textDecoration: 'none',
+            fontSize: '13px',
+            letterSpacing: '0.05em',
+            transition: 'all 0.3s ease'
+          }}>
+            📖 História & Cultura
+          </Link>
+        </div>
       </section>
 
       {/* ── Footer ── */}
@@ -314,7 +369,6 @@ export default function Home() {
           nav { padding: 20px !important; }
         }
       `}</style>
-      forçar deploy
     </main>
   )
 }
