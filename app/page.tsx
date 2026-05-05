@@ -1,4 +1,3 @@
-import Link from "next/link";
 "use client";
 // ============================================================
 // Página Inicial — Montalegre
@@ -7,7 +6,6 @@ import Link from "next/link";
 // ============================================================
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
