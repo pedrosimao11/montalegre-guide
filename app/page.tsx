@@ -314,6 +314,7 @@ export default function Home() {
           nav { padding: 20px !important; }
         }
       `}</style>
+      forçar deploy
     </main>
-  );
+  )
 }
