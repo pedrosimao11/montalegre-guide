@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const PHOTOS = {
-  hero: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg/1280px-Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg",
-  castelo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Castelo_de_Montalegre_2020_01.jpg/1280px-Castelo_de_Montalegre_2020_01.jpg",
-  bruxas: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Centro_Hist%C3%B3rico_de_Montalegre.JPG/1280px-Centro_Hist%C3%B3rico_de_Montalegre.JPG",
-  fumeiro: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Montalegre_%2825376042593%29.jpg/1280px-Montalegre_%2825376042593%29.jpg",
-  natureza: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg/1280px-Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg",
-  vezeiras: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg/1280px-Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg",
+  hero: "/hero.jpg",
+  castelo: "/castelo.jpg",
+  bruxas: "/bruxas.jpg",
+  fumeiro: "/fumeiro.jpg",
+  natureza: "/natureza.jpg",
+  chegas: "/chegas.jpg",
 };
 
 const SCROLL_SECTIONS = [
@@ -45,11 +45,11 @@ const SCROLL_SECTIONS = [
     photo: PHOTOS.natureza,
   },
   {
-    id: "tradicao",
-    label: "Património Agrícola Mundial · FAO 2018",
-    title: "Vezeiras\nTradição Viva",
-    text: "Sistema ancestral de pastoreio comunitário reconhecido pela FAO. Uma tradição milenar que ainda pulsa no coração de Barroso.",
-    photo: PHOTOS.vezeiras,
+    id: "chegas",
+    label: "Tradição Equestre · Coração de Barroso",
+    title: "Chegas de Bois\nPaixão Barrosã",
+    text: "As Chegas de Bois são a mais genuína tradição de Barroso. Um combate de força entre touros que atrai milhares de pessoas, num espetáculo único onde a terra treme e a paixão fala mais alto.",
+    photo: PHOTOS.chegas,
   },
 ];
 
@@ -147,7 +147,7 @@ export default function Home() {
 
           <h1 style={{
             fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "clamp(60px, 12vw, 140px)",
+            fontSize: "clamp(48px, 10vw, 100px)",
             lineHeight: 0.9, fontWeight: 400, letterSpacing: "-0.03em",
             opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(50px)",
             transition: "all 1.1s cubic-bezier(0.16,1,0.3,1) 0.35s",
@@ -223,7 +223,7 @@ export default function Home() {
             { num: "877", unit: "m", label: "Altitude" },
             { num: "1273", unit: "", label: "Ano do Foral" },
             { num: "XIV", unit: "", label: "Século do Castelo" },
-            { num: "560", unit: "km²", label: "Município" },
+            { num: "2000", unit: "anos+", label: "Tradição Ancestral" },
           ].map((item, i) => (
             <div key={item.label} style={{
               textAlign: "center", padding: "36px 20px",
@@ -369,7 +369,7 @@ export default function Home() {
 
       {/* CTA FINAL */}
       <section style={{ position: "relative", padding: "140px 48px", textAlign: "center", overflow: "hidden", borderTop: "1px solid rgba(180,147,60,0.1)" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PHOTOS.vezeiras})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.1 }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PHOTOS.chegas})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.1 }} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, rgba(21,128,61,0.12) 0%, transparent 70%)" }} />
         <div style={{ position: "relative" }}>
           <p style={{ fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", color: "#b4933c", marginBottom: 24 }}>Pronto para explorar?</p>
@@ -428,7 +428,7 @@ export default function Home() {
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(240,237,230,0.2)" }}>Siga-nos</span>
             {/* Facebook */}
-            <a href="https://www.facebook.com/municipiodemontalegre" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://www.facebook.com/MunicipioMontalegre" target="_blank" rel="noopener noreferrer" style={{
               width: 36, height: 36, borderRadius: "50%",
               border: "1px solid rgba(180,147,60,0.3)",
               display: "flex", alignItems: "center", justifyContent: "center",
@@ -440,7 +440,7 @@ export default function Home() {
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#b4933c"; }}
             >f</a>
             {/* Instagram */}
-            <a href="https://www.instagram.com/municipiodemontalegre" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://www.instagram.com/municipiomontalegre/" target="_blank" rel="noopener noreferrer" style={{
               width: 36, height: 36, borderRadius: "50%",
               border: "1px solid rgba(180,147,60,0.3)",
               display: "flex", alignItems: "center", justifyContent: "center",
