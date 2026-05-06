@@ -6,6 +6,7 @@
 // ============================================================
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -106,19 +107,25 @@ export default function Home() {
 
           <h1 style={{
             fontSize: "clamp(64px, 14vw, 180px)",
-            lineHeight: 0.9, fontWeight: 400, letterSpacing: "-0.02em",
-            opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(40px)",
+            lineHeight: 0.9,
+            fontWeight: 400,
+            letterSpacing: "-0.02em",
+            opacity: loaded ? 1 : 0,
+            transform: loaded ? "translateY(0)" : "translateY(40px)",
             transition: "all 1s ease 0.4s",
           }}>
-            <span style={{ display: "block", color: "#f0ebe2" }}>Montal</span>
-            <span style={{ display: "block", color: "#c9a96e", fontStyle: "italic" }}>egre</span>
+            <span style={{ display: "block", color: "#f0ebe2", whiteSpace: "nowrap" }}>Mont</span>
+            <span style={{ display: "block", color: "#c9a96e", fontStyle: "italic", whiteSpace: "nowrap" }}>Alegre</span>
           </h1>
 
           <p style={{
-            fontSize: "clamp(13px, 1.5vw, 16px)", letterSpacing: "0.1em",
+            fontSize: "clamp(13px, 1.5vw, 16px)",
+            letterSpacing: "0.1em",
             color: "rgba(240,235,226,0.45)",
-            maxWidth: 480, margin: "32px auto 48px",
-            opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)",
+            maxWidth: 480,
+            margin: "32px auto 48px",
+            opacity: loaded ? 1 : 0,
+            transform: loaded ? "translateY(0)" : "translateY(20px)",
             transition: "all 0.8s ease 0.7s",
           }}>
             Uma vila medieval entre montanhas onde o tempo ainda respira devagar
@@ -273,7 +280,7 @@ export default function Home() {
           </svg>
         </Link>
 
-        {/* ══════════ NOVOS BOTÕES (AQUI FORA, NO SÍTIO CERTO) ══════════ */}
+        {/* ══════════ NOVOS BOTÕES ══════════ */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -358,30 +365,28 @@ export default function Home() {
           </span>
         </div>
       </footer>
+
       <style>{`
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { overflow-x: hidden; }
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px !important; }
-    section { padding-left: 20px !important; padding-right: 20px !important; }
-    h1 { font-size: clamp(48px, 12vw, 80px) !important; }
-    h2 { font-size: clamp(28px, 6vw, 48px) !important; }
-    div[style*="grid-template-columns"] {
-      grid-template-columns: 1fr !important;
-    }
-    div[style*="grid-template-columns: repeat(4"] {
-      grid-template-columns: repeat(2, 1fr) !important;
-    }
-    div[style*="grid-template-columns: 1fr 2fr"] {
-      grid-template-columns: 1fr !important;
-      gap: 40px !important;
-    }
-  }`}
-</style>
-
-      
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; }
+        @media (max-width: 768px) {
+          nav { padding: 16px 20px !important; }
+          section { padding-left: 20px !important; padding-right: 20px !important; }
+          h1 { font-size: clamp(48px, 12vw, 80px) !important; }
+          h2 { font-size: clamp(28px, 6vw, 48px) !important; }
+          div[style*="grid-template-columns"] {
+            grid-template-columns: 1fr !important;
+          }
+          div[style*="grid-template-columns: repeat(4"] {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          div[style*="grid-template-columns: 1fr 2fr"] {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+      `}</style>
     </main>
   )
 }
