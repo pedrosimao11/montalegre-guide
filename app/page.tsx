@@ -358,15 +358,30 @@ export default function Home() {
           </span>
         </div>
       </footer>
-
       <style>{`
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { overflow-x: hidden; }
-        @media (max-width: 768px) {
-          nav { padding: 20px !important; }
-        }
-      `}</style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px !important; }
+    section { padding-left: 20px !important; padding-right: 20px !important; }
+    h1 { font-size: clamp(48px, 12vw, 80px) !important; }
+    h2 { font-size: clamp(28px, 6vw, 48px) !important; }
+    div[style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+    }
+    div[style*="grid-template-columns: repeat(4"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    div[style*="grid-template-columns: 1fr 2fr"] {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+  }`}
+</style>
+
+      
+
     </main>
   )
 }
