@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HistoriaPage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
@@ -46,13 +48,13 @@ export default function HistoriaPage() {
           
           <section>
             <h2 className="text-2xl font-serif font-semibold mb-4 text-amber-400">
-              Vezeiras — Património da Humanidade
+              Chegas de Bois — Tradição Ancestral
             </h2>
             <p className="text-neutral-300 leading-relaxed">
-              O sistema de pastoreio comunitário das Vezeiras, onde o gado é criado em comum 
-              e guardado à vez pelos pastores, foi reconhecido pela FAO como Património 
-              Agrícola Mundial em 2018. É um exemplo vivo de como tradições milenares 
-              continuam a marcar o ritmo da vida em Barroso.
+              As Chegas de Bois são uma tradição milenar do povo barrosão. Muito mais do que 
+              um combate entre animais, são um símbolo de identidade, resistência e comunhão 
+              com a terra. Um espetáculo de força bruta que ecoa pelas montanhas e atrai 
+              forasteiros de todo o país.
             </p>
           </section>
           
