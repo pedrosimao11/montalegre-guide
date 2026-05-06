@@ -1,18 +1,18 @@
 "use client";
 // ============================================================
-// app/page.tsx — Página Inicial V3
-// Verde floresta + dourado | Fotos reais | Scroll com imagens
+// app/page.tsx — Página Inicial V5
+// Scroll full-screen com imagens reais | Redes sociais | Ajustes
 // ============================================================
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const PHOTOS = {
-  hero: "https://images.pexels.com/photos/2387413/pexels-photo-2387413.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  castelo: "https://images.pexels.com/photos/12171522/pexels-photo-12171522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  bruxas: "https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  fumeiro: "https://images.pexels.com/photos/1482803/pexels-photo-1482803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  natureza: "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  vezeiras: "https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  hero: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg/1280px-Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg",
+  castelo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Castelo_de_Montalegre_2020_01.jpg/1280px-Castelo_de_Montalegre_2020_01.jpg",
+  bruxas: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Centro_Hist%C3%B3rico_de_Montalegre.JPG/1280px-Centro_Hist%C3%B3rico_de_Montalegre.JPG",
+  fumeiro: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Montalegre_%2825376042593%29.jpg/1280px-Montalegre_%2825376042593%29.jpg",
+  natureza: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg/1280px-Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg",
+  vezeiras: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg/1280px-Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg",
 };
 
 const SCROLL_SECTIONS = [
@@ -20,63 +20,46 @@ const SCROLL_SECTIONS = [
     id: "castelo",
     label: "Séc. XIV · Monumento Nacional",
     title: "O Castelo\nde Montalegre",
-    text: "Erguido por D. Dinis no século XIV, o Castelo de Montalegre domina a vila do alto de uma colina rochosa a 980 metros de altitude. As suas quatro torres e a imponente torre de menagem foram testemunhas silenciosas de séculos de história, guerras e conquistas.",
+    text: "Erguido por D. Dinis no século XIV, domina a vila do alto de uma colina rochosa. Quatro torres e uma imponente torre de menagem testemunham séculos de história.",
     photo: PHOTOS.castelo,
-    color: "#b4933c",
   },
   {
     id: "bruxas",
     label: "Maior espetáculo de rua de Portugal",
     title: "Sexta 13\nNoite das Bruxas",
-    text: "Levada à rua pela primeira vez em 2002, a 'Sexta 13 – Noite das Bruxas' transformou uma superstição numa festa mágica única no mundo. Cada sexta-feira 13, 50.000 pessoas invadem Montalegre numa atmosfera de fogo, mistério e tradição barrosã.",
+    text: "Desde 2002, cada sexta-feira 13 transforma Montalegre num palco de fogo, mistério e tradição. 50.000 pessoas invadem a vila para uma festa única no mundo.",
     photo: PHOTOS.bruxas,
-    color: "#7c3aed",
   },
   {
     id: "fumeiro",
     label: "Rainha das Feiras de Portugal",
     title: "Feira do\nFumeiro",
-    text: "A Feira do Fumeiro de Montalegre é considerada a 'Rainha das Feiras de Portugal'. Durante quatro dias em janeiro, produtores de toda a região expõem o melhor do fumeiro barrosão — presuntos, salpicões, chouriças — numa celebração da gastronomia transmontana.",
+    text: "Durante quatro dias em janeiro, a Feira do Fumeiro mostra o melhor dos enchidos barrosãos. Presuntos, salpicões e chouriças que contam histórias de gerações.",
     photo: PHOTOS.fumeiro,
-    color: "#c2410c",
   },
   {
     id: "natureza",
     label: "Peneda-Gerês · Único Parque Nacional",
     title: "Natureza\nSelvagem",
-    text: "Montalegre é a porta de entrada para o Parque Nacional da Peneda-Gerês, o único parque nacional de Portugal. Cascatas escondidas, lagoas glaciares, lobos ibéricos e paisagens que cortam a respiração esperam-te a poucos minutos da vila.",
+    text: "Porta de entrada para o Parque Nacional da Peneda-Gerês. Cascatas, lagoas glaciares e paisagens que cortam a respiração a poucos minutos da vila.",
     photo: PHOTOS.natureza,
-    color: "#15803d",
   },
   {
     id: "tradicao",
     label: "Património Agrícola Mundial · FAO 2018",
     title: "Vezeiras\nTradição Viva",
-    text: "As Vezeiras — sistema ancestral de pastoreio comunitário onde o gado é guardado à vez pelos pastores da comunidade — foram reconhecidas pela FAO como Património Agrícola Mundial em 2018. Uma tradição milenar que ainda pulsa no coração de Barroso.",
+    text: "Sistema ancestral de pastoreio comunitário reconhecido pela FAO. Uma tradição milenar que ainda pulsa no coração de Barroso.",
     photo: PHOTOS.vezeiras,
-    color: "#b4933c",
   },
 ];
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const [activeSection, setActiveSection] = useState(0);
-  const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 150);
-    const onScroll = () => {
-      setScrollY(window.scrollY);
-      if (sectionsRef.current[0] && window.scrollY < 100) setActiveSection(0);
-      sectionsRef.current.forEach((el, i) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) {
-          setActiveSection(i);
-        }
-      });
-    };
+    const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -86,7 +69,7 @@ export default function Home() {
   return (
     <div style={{ background: "#050d07", color: "#f0ede6", fontFamily: "'Helvetica Neue', Arial, sans-serif", overflowX: "hidden" }}>
 
-      {/* GRAIN */}
+      {/* GRAIN OVERLAY */}
       <div style={{
         position: "fixed", inset: 0, zIndex: 200, pointerEvents: "none", opacity: 0.04,
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
@@ -151,12 +134,6 @@ export default function Home() {
           position: "absolute", inset: 0,
           background: "linear-gradient(to bottom, rgba(5,13,7,0.2) 0%, rgba(5,13,7,0.55) 50%, rgba(5,13,7,0.92) 85%, #050d07 100%)",
         }} />
-        <div style={{
-          position: "absolute", bottom: "15%", left: "50%", transform: "translateX(-50%)",
-          width: 800, height: 300, borderRadius: "50%",
-          background: "radial-gradient(ellipse, rgba(21,128,61,0.18) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }} />
 
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 24px", maxWidth: 900 }}>
           <p style={{
@@ -170,10 +147,11 @@ export default function Home() {
 
           <h1 style={{
             fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "clamp(80px, 17vw, 210px)",
-            lineHeight: 0.85, fontWeight: 400, letterSpacing: "-0.03em",
+            fontSize: "clamp(60px, 12vw, 140px)",
+            lineHeight: 0.9, fontWeight: 400, letterSpacing: "-0.03em",
             opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(50px)",
             transition: "all 1.1s cubic-bezier(0.16,1,0.3,1) 0.35s",
+            marginBottom: 24,
           }}>
             <span style={{
               display: "block",
@@ -244,7 +222,7 @@ export default function Home() {
           {[
             { num: "877", unit: "m", label: "Altitude" },
             { num: "1273", unit: "", label: "Ano do Foral" },
-            { num: "50K", unit: "+", label: "Visitantes Sexta 13" },
+            { num: "XIV", unit: "", label: "Século do Castelo" },
             { num: "560", unit: "km²", label: "Município" },
           ].map((item, i) => (
             <div key={item.label} style={{
@@ -262,72 +240,88 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SCROLL STORYTELLING */}
-      <div style={{ position: "relative" }}>
-        {SCROLL_SECTIONS.map((section, i) => (
-          <div
-            key={section.id}
-            style={{
-              display: "flex",
-              flexDirection: i % 2 === 0 ? "row" : "row-reverse",
-              minHeight: "100vh",
-              alignItems: "center",
-              padding: "60px 48px",
-              gap: 60,
-              borderBottom: "1px solid rgba(180,147,60,0.08)",
-            }}
-          >
-            {/* Texto */}
-            <div style={{ flex: 1, maxWidth: 500 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-                <div style={{ width: 36, height: 1, background: section.color }} />
-                <span style={{ fontSize: 9, letterSpacing: "0.5em", textTransform: "uppercase", color: section.color }}>
-                  {String(i + 1).padStart(2, "0")} — {section.label}
-                </span>
-              </div>
-              <h2 style={{
-                fontFamily: "Georgia, serif",
-                fontSize: "clamp(36px, 4vw, 60px)",
-                fontWeight: 300,
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-                color: "#f0ede6",
-                marginBottom: 24,
-                whiteSpace: "pre-line",
-              }}>
-                {section.title}
-              </h2>
-              <p style={{
-                fontSize: 15,
-                lineHeight: 1.9,
-                color: "rgba(240,237,230,0.55)",
-                maxWidth: 440,
-              }}>
-                {section.text}
-              </p>
-            </div>
+      {/* SCROLL STORYTELLING — FULL SCREEN COM BACKGROUND */}
+      {SCROLL_SECTIONS.map((section, i) => (
+        <section
+          key={section.id}
+          style={{
+            position: "relative",
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: i % 2 === 0 ? "flex-start" : "flex-end",
+            padding: "80px 8%",
+            backgroundImage: `url(${section.photo})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+          }}
+        >
+          {/* Camada escura */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(5,13,7,0.75)",
+            zIndex: 1,
+          }} />
 
-            {/* Foto */}
+          {/* Gradiente de transição no topo (excepto primeira) */}
+          {i > 0 && (
             <div style={{
-              flex: 1,
-              height: "70vh",
-              borderRadius: 2,
-              overflow: "hidden",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
-            }}>
-              <img
-                src={section.photo}
-                alt={section.title}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "30vh",
+              background: "linear-gradient(to bottom, #050d07, transparent)",
+              zIndex: 2,
+            }} />
+          )}
+
+          {/* Gradiente de transição no fundo (excepto última) */}
+          {i < SCROLL_SECTIONS.length - 1 && (
+            <div style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "30vh",
+              background: "linear-gradient(to top, #050d07, transparent)",
+              zIndex: 2,
+            }} />
+          )}
+
+          {/* Conteúdo */}
+          <div style={{ position: "relative", zIndex: 3, maxWidth: 550 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+              <div style={{ width: 36, height: 1, background: "#b4933c" }} />
+              <span style={{ fontSize: 9, letterSpacing: "0.5em", textTransform: "uppercase", color: "#b4933c" }}>
+                {String(i + 1).padStart(2, "0")} — {section.label}
+              </span>
             </div>
+            <h2 style={{
+              fontFamily: "Georgia, serif",
+              fontSize: "clamp(36px, 4vw, 64px)",
+              fontWeight: 300,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              color: "#f0ede6",
+              marginBottom: 24,
+              whiteSpace: "pre-line",
+            }}>
+              {section.title}
+            </h2>
+            <p style={{
+              fontSize: 15,
+              lineHeight: 1.9,
+              color: "rgba(240,237,230,0.7)",
+              maxWidth: 440,
+            }}>
+              {section.text}
+            </p>
           </div>
-        ))}
-      </div>
+        </section>
+      ))}
 
       {/* QUICK LINKS */}
       <section style={{ padding: "120px 48px", background: "#060e08" }}>
@@ -401,21 +395,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{ borderTop: "1px solid rgba(180,147,60,0.08)", padding: "28px 48px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#040a05" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <svg width="14" height="14" viewBox="0 0 22 22">
-            <polygon points="11,2 20,20 2,20" fill="none" stroke="#b4933c" strokeWidth="1.5" strokeLinejoin="round" opacity="0.4"/>
-          </svg>
-          <span style={{ fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(240,237,230,0.2)" }}>Montalegre · Terra de Barroso · Norte de Portugal</span>
-        </div>
-        <div style={{ display: "flex", gap: 24 }}>
-          {[{ label: "História", href: "/historia" }, { label: "Eventos", href: "/eventos" }, { label: "Galeria", href: "/galeria" }, { label: "Guia", href: "/guide" }].map(item => (
-            <Link key={item.href} href={item.href} style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,230,0.2)", textDecoration: "none", transition: "color 0.3s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#b4933c")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,237,230,0.2)")}
-            >{item.label}</Link>
-          ))}
+      {/* FOOTER COM REDES SOCIAIS */}
+      <footer style={{ borderTop: "1px solid rgba(180,147,60,0.08)", padding: "40px 48px", background: "#040a05" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+          {/* Marca */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <svg width="14" height="14" viewBox="0 0 22 22">
+              <polygon points="11,2 20,20 2,20" fill="none" stroke="#b4933c" strokeWidth="1.5" strokeLinejoin="round" opacity="0.4"/>
+            </svg>
+            <span style={{ fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(240,237,230,0.2)" }}>Montalegre · Terra de Barroso</span>
+          </div>
+
+          {/* Links de páginas */}
+          <div style={{ display: "flex", gap: 24 }}>
+            {[
+              { label: "História", href: "/historia" },
+              { label: "Eventos", href: "/eventos" },
+              { label: "Galeria", href: "/galeria" },
+              { label: "Guia", href: "/guide" },
+            ].map(item => (
+              <Link key={item.href} href={item.href} style={{
+                fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase",
+                color: "rgba(240,237,230,0.2)", textDecoration: "none", transition: "color 0.3s"
+              }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#b4933c")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,237,230,0.2)")}
+              >{item.label}</Link>
+            ))}
+          </div>
+
+          {/* REDES SOCIAIS */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <span style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(240,237,230,0.2)" }}>Siga-nos</span>
+            {/* Facebook */}
+            <a href="https://www.facebook.com/municipiodemontalegre" target="_blank" rel="noopener noreferrer" style={{
+              width: 36, height: 36, borderRadius: "50%",
+              border: "1px solid rgba(180,147,60,0.3)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#b4933c", textDecoration: "none",
+              transition: "all 0.3s ease",
+              fontSize: 14, fontWeight: 700,
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#b4933c"; (e.currentTarget as HTMLElement).style.color = "#050d07"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#b4933c"; }}
+            >f</a>
+            {/* Instagram */}
+            <a href="https://www.instagram.com/municipiodemontalegre" target="_blank" rel="noopener noreferrer" style={{
+              width: 36, height: 36, borderRadius: "50%",
+              border: "1px solid rgba(180,147,60,0.3)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#b4933c", textDecoration: "none",
+              transition: "all 0.3s ease",
+              fontSize: 14, fontWeight: 700,
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#b4933c"; (e.currentTarget as HTMLElement).style.color = "#050d07"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#b4933c"; }}
+            >📷</a>
+            {/* Site da Câmara */}
+            <a href="https://www.cm-montalegre.pt" target="_blank" rel="noopener noreferrer" style={{
+              width: 36, height: 36, borderRadius: "50%",
+              border: "1px solid rgba(180,147,60,0.3)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              color: "#b4933c", textDecoration: "none",
+              transition: "all 0.3s ease",
+              fontSize: 14, fontWeight: 700,
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#b4933c"; (e.currentTarget as HTMLElement).style.color = "#050d07"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#b4933c"; }}
+            >🌐</a>
+          </div>
         </div>
       </footer>
 
