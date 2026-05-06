@@ -1,18 +1,18 @@
 "use client";
 // ============================================================
 // app/page.tsx — Página Inicial V3
-// Verde floresta + dourado | Fotos reais | Scroll cinematográfico
+// Verde floresta + dourado | Fotos reais | Scroll com imagens
 // ============================================================
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
 const PHOTOS = {
-  hero: "https://images.unsplash.com/photo-1590682680693-43b4b0d40a10?w=1200",
-  castelo: "https://images.unsplash.com/photo-1543342579-dd4d0daec3f5?w=1200",
-  bruxas: "https://images.unsplash.com/photo-1509807995916-c332365e2f3b?w=1200",
-  fumeiro: "https://images.pexels.com/photos/8477859/pexels-photo-8477859.jpeg?w=1200",
-  natureza: "https://images.unsplash.com/photo-1446329813274-7c9036bd9a1f?w=1200",
-  vezeiras: "https://images.unsplash.com/photo-1500076656116-558758c991c1?w=1200",
+  hero: "https://images.pexels.com/photos/2387413/pexels-photo-2387413.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  castelo: "https://images.pexels.com/photos/12171522/pexels-photo-12171522.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  bruxas: "https://images.pexels.com/photos/207529/pexels-photo-207529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  fumeiro: "https://images.pexels.com/photos/1482803/pexels-photo-1482803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  natureza: "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  vezeiras: "https://images.pexels.com/photos/2132180/pexels-photo-2132180.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 };
 
 const SCROLL_SECTIONS = [
@@ -261,71 +261,75 @@ export default function Home() {
           ))}
         </div>
       </section>
+
       {/* SCROLL STORYTELLING */}
-<div style={{ position: "relative" }}>
-  {SCROLL_SECTIONS.map((section, i) => (
-    <div
-      key={section.id}
-      style={{
-        display: "flex",
-        flexDirection: i % 2 === 0 ? "row" : "row-reverse",
-        minHeight: "100vh",
-        alignItems: "center",
-        padding: "60px 48px",
-        gap: 60,
-        borderBottom: "1px solid rgba(180,147,60,0.08)",
-      }}
-    >
-      {/* Texto */}
-      <div style={{ flex: 1, maxWidth: 500 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-          <div style={{ width: 36, height: 1, background: section.color }} />
-          <span style={{ fontSize: 9, letterSpacing: "0.5em", textTransform: "uppercase", color: section.color }}>
-            {String(i + 1).padStart(2, "0")} — {section.label}
-          </span>
-        </div>
-        <h2 style={{
-          fontFamily: "Georgia, serif",
-          fontSize: "clamp(36px, 4vw, 60px)",
-          fontWeight: 300,
-          lineHeight: 1.1,
-          letterSpacing: "-0.02em",
-          color: "#f0ede6",
-          marginBottom: 24,
-          whiteSpace: "pre-line",
-        }}>
-          {section.title}
-        </h2>
-        <p style={{
-          fontSize: 15,
-          lineHeight: 1.9,
-          color: "rgba(240,237,230,0.55)",
-          maxWidth: 440,
-        }}>
-          {section.text}
-        </p>
+      <div style={{ position: "relative" }}>
+        {SCROLL_SECTIONS.map((section, i) => (
+          <div
+            key={section.id}
+            style={{
+              display: "flex",
+              flexDirection: i % 2 === 0 ? "row" : "row-reverse",
+              minHeight: "100vh",
+              alignItems: "center",
+              padding: "60px 48px",
+              gap: 60,
+              borderBottom: "1px solid rgba(180,147,60,0.08)",
+            }}
+          >
+            {/* Texto */}
+            <div style={{ flex: 1, maxWidth: 500 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                <div style={{ width: 36, height: 1, background: section.color }} />
+                <span style={{ fontSize: 9, letterSpacing: "0.5em", textTransform: "uppercase", color: section.color }}>
+                  {String(i + 1).padStart(2, "0")} — {section.label}
+                </span>
+              </div>
+              <h2 style={{
+                fontFamily: "Georgia, serif",
+                fontSize: "clamp(36px, 4vw, 60px)",
+                fontWeight: 300,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                color: "#f0ede6",
+                marginBottom: 24,
+                whiteSpace: "pre-line",
+              }}>
+                {section.title}
+              </h2>
+              <p style={{
+                fontSize: 15,
+                lineHeight: 1.9,
+                color: "rgba(240,237,230,0.55)",
+                maxWidth: 440,
+              }}>
+                {section.text}
+              </p>
+            </div>
+
+            {/* Foto */}
+            <div style={{
+              flex: 1,
+              height: "70vh",
+              borderRadius: 2,
+              overflow: "hidden",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+            }}>
+              <img
+                src={section.photo}
+                alt={section.title}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Foto */}
-      <div style={{
-        flex: 1,
-        height: "70vh",
-        borderRadius: 2,
-        overflow: "hidden",
-        boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
-      }}>
-        <div style={{
-          width: "100%",
-          height: "100%",
-          backgroundImage: `url(${section.photo})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }} />
-      </div>
-    </div>
-  ))}
-</div>
- {/* QUICK LINKS */}
+      {/* QUICK LINKS */}
       <section style={{ padding: "120px 48px", background: "#060e08" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 56 }}>
@@ -371,7 +375,7 @@ export default function Home() {
 
       {/* CTA FINAL */}
       <section style={{ position: "relative", padding: "140px 48px", textAlign: "center", overflow: "hidden", borderTop: "1px solid rgba(180,147,60,0.1)" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PHOTOS.vila})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.1 }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PHOTOS.vezeiras})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.1 }} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, rgba(21,128,61,0.12) 0%, transparent 70%)" }} />
         <div style={{ position: "relative" }}>
           <p style={{ fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", color: "#b4933c", marginBottom: 24 }}>Pronto para explorar?</p>
