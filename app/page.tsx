@@ -261,81 +261,71 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       {/* SCROLL STORYTELLING */}
-      <div style={{ position: "relative" }}>
-        {/* Sticky photo panel */}
-        <div style={{
-          position: "sticky", top: 0, height: "100vh",
-          display: "flex", alignItems: "center", justifyContent: "flex-end",
-          pointerEvents: "none", zIndex: 1,
-         marginBottom: "-500vh",
+<div style={{ position: "relative" }}>
+  {SCROLL_SECTIONS.map((section, i) => (
+    <div
+      key={section.id}
+      style={{
+        display: "flex",
+        flexDirection: i % 2 === 0 ? "row" : "row-reverse",
+        minHeight: "100vh",
+        alignItems: "center",
+        padding: "60px 48px",
+        gap: 60,
+        borderBottom: "1px solid rgba(180,147,60,0.08)",
+      }}
+    >
+      {/* Texto */}
+      <div style={{ flex: 1, maxWidth: 500 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+          <div style={{ width: 36, height: 1, background: section.color }} />
+          <span style={{ fontSize: 9, letterSpacing: "0.5em", textTransform: "uppercase", color: section.color }}>
+            {String(i + 1).padStart(2, "0")} — {section.label}
+          </span>
+        </div>
+        <h2 style={{
+          fontFamily: "Georgia, serif",
+          fontSize: "clamp(36px, 4vw, 60px)",
+          fontWeight: 300,
+          lineHeight: 1.1,
+          letterSpacing: "-0.02em",
+          color: "#f0ede6",
+          marginBottom: 24,
+          whiteSpace: "pre-line",
         }}>
-          <div style={{ position: "relative", width: "48%", height: "72vh", overflow: "hidden" }}>
-            {SCROLL_SECTIONS.map((s, i) => (
-              <div key={s.id} style={{
-                position: "absolute", inset: 0,
-                backgroundImage: `url(${s.photo})`,
-                backgroundSize: "cover", backgroundPosition: "center",
-                opacity: activeSection === i ? 1 : 0,
-                transition: "opacity 0.9s cubic-bezier(0.4,0,0.2,1)",
-              }}>
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,13,7,0.75) 0%, rgba(5,13,7,0.1) 60%)" }} />
-                {/* Label on photo */}
-                <div style={{
-                  position: "absolute", bottom: 28, left: 28,
-                  padding: "8px 16px",
-                  background: `${s.color}22`,
-                  border: `1px solid ${s.color}44`,
-                  backdropFilter: "blur(8px)",
-                }}>
-                  <span style={{ fontSize: 9, letterSpacing: "0.35em", textTransform: "uppercase", color: s.color }}>
-                    {s.label}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Text sections */}
-        <div style={{ position: "relative", zIndex: 2 }}>
-          {SCROLL_SECTIONS.map((section, i) => (
-            <div
-              key={section.id}
-              ref={el => { sectionsRef.current[i] = el; }}
-              style={{
-                minHeight: "100vh",
-                display: "flex", alignItems: "center",
-                padding: "80px 8% 80px 8%",
-                maxWidth: "52%",
-              }}
-            >
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-                  <div style={{ width: 36, height: 1, background: section.color }} />
-                  <span style={{ fontSize: 9, letterSpacing: "0.5em", textTransform: "uppercase", color: section.color }}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <h2 style={{
-                  fontFamily: "Georgia, serif",
-                  fontSize: "clamp(40px, 4.5vw, 68px)",
-                  fontWeight: 300, lineHeight: 1.05, letterSpacing: "-0.02em",
-                  color: "#f0ede6", marginBottom: 28, whiteSpace: "pre-line",
-                }}>
-                  {section.title}
-                </h2>
-                <p style={{ fontSize: 15, lineHeight: 1.9, color: "rgba(240,237,230,0.55)", maxWidth: 440 }}>
-                  {section.text}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+          {section.title}
+        </h2>
+        <p style={{
+          fontSize: 15,
+          lineHeight: 1.9,
+          color: "rgba(240,237,230,0.55)",
+          maxWidth: 440,
+        }}>
+          {section.text}
+        </p>
       </div>
 
-      {/* QUICK LINKS */}
+      {/* Foto */}
+      <div style={{
+        flex: 1,
+        height: "70vh",
+        borderRadius: 2,
+        overflow: "hidden",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+      }}>
+        <div style={{
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${section.photo})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }} />
+      </div>
+    </div>
+  ))}
+</div>
+ {/* QUICK LINKS */}
       <section style={{ padding: "120px 48px", background: "#060e08" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 56 }}>
