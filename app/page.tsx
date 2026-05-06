@@ -9,10 +9,10 @@ import { useEffect, useState, useRef } from "react";
 const PHOTOS = {
   hero: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg/1280px-Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg",
   castelo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Castelo_de_Montalegre_2020_01.jpg/1280px-Castelo_de_Montalegre_2020_01.jpg",
-  paisagem: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg/1280px-Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg",
-  albufeira: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg/1280px-Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg",
-  centro: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Centro_Hist%C3%B3rico_de_Montalegre.JPG/1280px-Centro_Hist%C3%B3rico_de_Montalegre.JPG",
-  vila: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Montalegre_%2825376042593%29.jpg/1280px-Montalegre_%2825376042593%29.jpg",
+  bruxas: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Centro_Hist%C3%B3rico_de_Montalegre.JPG/1280px-Centro_Hist%C3%B3rico_de_Montalegre.JPG",
+  fumeiro: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Montalegre_%2825376042593%29.jpg/1280px-Montalegre_%2825376042593%29.jpg",
+  natureza: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg/1280px-Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg",
+  vezeiras: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg/1280px-Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg",
 };
 
 const SCROLL_SECTIONS = [
@@ -29,7 +29,7 @@ const SCROLL_SECTIONS = [
     label: "Maior espetáculo de rua de Portugal",
     title: "Sexta 13\nNoite das Bruxas",
     text: "Levada à rua pela primeira vez em 2002, a 'Sexta 13 – Noite das Bruxas' transformou uma superstição numa festa mágica única no mundo. Cada sexta-feira 13, 50.000 pessoas invadem Montalegre numa atmosfera de fogo, mistério e tradição barrosã.",
-    photo: PHOTOS.centro,
+    photo: PHOTOS.bruxas,
     color: "#7c3aed",
   },
   {
@@ -37,7 +37,7 @@ const SCROLL_SECTIONS = [
     label: "Rainha das Feiras de Portugal",
     title: "Feira do\nFumeiro",
     text: "A Feira do Fumeiro de Montalegre é considerada a 'Rainha das Feiras de Portugal'. Durante quatro dias em janeiro, produtores de toda a região expõem o melhor do fumeiro barrosão — presuntos, salpicões, chouriças — numa celebração da gastronomia transmontana.",
-    photo: PHOTOS.paisagem,
+    photo: PHOTOS.fumeiro,
     color: "#c2410c",
   },
   {
@@ -45,7 +45,7 @@ const SCROLL_SECTIONS = [
     label: "Peneda-Gerês · Único Parque Nacional",
     title: "Natureza\nSelvagem",
     text: "Montalegre é a porta de entrada para o Parque Nacional da Peneda-Gerês, o único parque nacional de Portugal. Cascatas escondidas, lagoas glaciares, lobos ibéricos e paisagens que cortam a respiração esperam-te a poucos minutos da vila.",
-    photo: PHOTOS.albufeira,
+    photo: PHOTOS.natureza,
     color: "#15803d",
   },
   {
@@ -53,7 +53,7 @@ const SCROLL_SECTIONS = [
     label: "Património Agrícola Mundial · FAO 2018",
     title: "Vezeiras\nTradição Viva",
     text: "As Vezeiras — sistema ancestral de pastoreio comunitário onde o gado é guardado à vez pelos pastores da comunidade — foram reconhecidas pela FAO como Património Agrícola Mundial em 2018. Uma tradição milenar que ainda pulsa no coração de Barroso.",
-    photo: PHOTOS.vila,
+    photo: PHOTOS.vezeiras,
     color: "#b4933c",
   },
 ];
