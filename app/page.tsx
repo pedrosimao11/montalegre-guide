@@ -110,8 +110,8 @@ export default function Home() {
             opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(40px)",
             transition: "all 1s ease 0.4s",
           }}>
-            <span style={{ display: "block", color: "#f0ebe2" }}>Monta</span>
-            <span style={{ display: "block", color: "#c9a96e", fontStyle: "italic" }}>legre</span>
+            <span style={{ display: "block", color: "#f0ebe2" }}>Mont</span>
+            <span style={{ display: "block", color: "#c9a96e", fontStyle: "italic" }}>alegre</span>
           </h1>
 
           <p style={{
