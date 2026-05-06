@@ -7,12 +7,12 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
 const PHOTOS = {
-  hero: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg/1280px-Castelo_de_Montalegre_-_Portugal_%2812946278003%29.jpg",
-  castelo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Castelo_de_Montalegre_2020_01.jpg/1280px-Castelo_de_Montalegre_2020_01.jpg",
-  bruxas: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Centro_Hist%C3%B3rico_de_Montalegre.JPG/1280px-Centro_Hist%C3%B3rico_de_Montalegre.JPG",
-  fumeiro: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Montalegre_%2825376042593%29.jpg/1280px-Montalegre_%2825376042593%29.jpg",
-  natureza: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg/1280px-Arredores_de_Montalegre_-_Portugal_%283958417877%29.jpg",
-  vezeiras: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg/1280px-Albufeira_de_Salas_-_Portugal_%285614490292%29.jpg",
+  hero: "https://images.unsplash.com/photo-1590682680693-43b4b0d40a10?w=1200",
+  castelo: "https://images.unsplash.com/photo-1543342579-dd4d0daec3f5?w=1200",
+  bruxas: "https://images.unsplash.com/photo-1509807995916-c332365e2f3b?w=1200",
+  fumeiro: "https://images.pexels.com/photos/8477859/pexels-photo-8477859.jpeg?w=1200",
+  natureza: "https://images.unsplash.com/photo-1446329813274-7c9036bd9a1f?w=1200",
+  vezeiras: "https://images.unsplash.com/photo-1500076656116-558758c991c1?w=1200",
 };
 
 const SCROLL_SECTIONS = [
