@@ -4,7 +4,7 @@ export default function GaleriaPage() {
     { src: "/api/placeholder/800/600", alt: "Serra do Larouco", legenda: "Serra do Larouco ao amanhecer" },
     { src: "/api/placeholder/800/600", alt: "Albufeira do Alto Rabagão", legenda: "Albufeira do Alto Rabagão" },
     { src: "/api/placeholder/800/600", alt: "Igreja Matriz", legenda: "Igreja Matriz de Montalegre" },
-    { src: "/api/placeholder/800/600", alt: "Pastoreio tradicional", legenda: "Vezeiras – Património Mundial" },
+    { src: "/api/placeholder/800/600", alt: "Chega de Bois tradicional", legenda: "Chegas de Bois – Tradição Ancestral" },
     { src: "/api/placeholder/800/600", alt: "Noite das Bruxas", legenda: "Sexta-feira 13 – Noite das Bruxas" },
   ];
 
