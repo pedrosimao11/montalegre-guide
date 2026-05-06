@@ -68,6 +68,7 @@ export default function Home() {
     setTimeout(() => setLoaded(true), 150);
     const onScroll = () => {
       setScrollY(window.scrollY);
+      if (sectionsRef.current[0] && window.scrollY < 100) setActiveSection(0);
       sectionsRef.current.forEach((el, i) => {
         if (!el) return;
         const rect = el.getBoundingClientRect();
@@ -268,7 +269,7 @@ export default function Home() {
           position: "sticky", top: 0, height: "100vh",
           display: "flex", alignItems: "center", justifyContent: "flex-end",
           pointerEvents: "none", zIndex: 1,
-          marginBottom: `-${SCROLL_SECTIONS.length * 100}vh`,
+         marginBottom: "-500vh",
         }}>
           <div style={{ position: "relative", width: "48%", height: "72vh", overflow: "hidden" }}>
             {SCROLL_SECTIONS.map((s, i) => (
