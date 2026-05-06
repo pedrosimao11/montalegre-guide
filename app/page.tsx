@@ -13,6 +13,7 @@ const PHOTOS = {
   fumeiro: "/fumeiro.jpg",
   natureza: "/natureza.jpg",
   chegas: "/chegas.jpg",
+  cta: "/descubra.jpeg",
 };
 
 const SCROLL_SECTIONS = [
@@ -369,7 +370,7 @@ export default function Home() {
 
       {/* CTA FINAL */}
       <section style={{ position: "relative", padding: "140px 48px", textAlign: "center", overflow: "hidden", borderTop: "1px solid rgba(180,147,60,0.1)" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PHOTOS.chegas})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.1 }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PHOTOS.cta})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.1 }} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, rgba(21,128,61,0.12) 0%, transparent 70%)" }} />
         <div style={{ position: "relative" }}>
           <p style={{ fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", color: "#b4933c", marginBottom: 24 }}>Pronto para explorar?</p>
