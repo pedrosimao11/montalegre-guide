@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-PT">
+    <html lang="pt-PT" data-scroll-behavior="smooth">
       <body className={`${playfair.variable} ${lato.variable} font-body antialiased`}>
         {children}
       </body>

@@ -1,10 +1,12 @@
 "use client";
-// ============================================================
-// app/page.tsx — Página Inicial V5
-// Apenas cores, ícones sociais e ícones explorar atualizados
-// ============================================================
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { MapPin, Castle, Calendar, Route, Image as ImageIcon, ArrowRight } from "lucide-react";
+
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { GrainOverlay } from "@/components/GrainOverlay";
 
 const PHOTOS = {
   hero: "/hero.jpg",
@@ -13,7 +15,7 @@ const PHOTOS = {
   fumeiro: "/fumeiro.jpg",
   natureza: "/natureza.jpg",
   chegas: "/chegas.jpg",
-  cta: "/descubra.jpeg",
+  cta: "/descubra.jpg",
 };
 
 const SCROLL_SECTIONS = [
@@ -54,39 +56,17 @@ const SCROLL_SECTIONS = [
   },
 ];
 
-// ── Ícones SVG reais das redes sociais ──
-const FacebookSVG = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-  </svg>
-);
-
-const InstagramSVG = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-  </svg>
-);
-
-const WebSVG = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 0C5.374 0 0 5.373 0 12c0 6.628 5.374 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12zm-1 17.93c-3.395-.477-6-3.367-6-6.93 0-.62.083-1.22.235-1.79L9 13v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.18 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-  </svg>
-);
-
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoaded(true), 150);
+    setLoaded(true);
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navScrolled = scrollY > 80;
-
-  // ── Cor principal: coral vibrante ──
   const CORAL = "#ff6b4a";
   const CORAL_LIGHT = "#ff8c6e";
   const BG = "#070d1a";
@@ -95,57 +75,8 @@ export default function Home() {
   return (
     <div style={{ background: BG, color: "#f0f4ff", fontFamily: "'Helvetica Neue', Arial, sans-serif", overflowX: "hidden" }}>
 
-      {/* GRAIN OVERLAY */}
-      <div style={{
-        position: "fixed", inset: 0, zIndex: 200, pointerEvents: "none", opacity: 0.04,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-      }} />
-
-      {/* NAV */}
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "16px 48px",
-        background: navScrolled ? `rgba(7,13,26,0.97)` : "transparent",
-        backdropFilter: navScrolled ? "blur(24px)" : "none",
-        borderBottom: navScrolled ? `1px solid ${CORAL}22` : "none",
-        transition: "all 0.5s ease",
-      }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-          <svg width="20" height="20" viewBox="0 0 22 22">
-            <polygon points="11,2 20,20 2,20" fill="none" stroke={CORAL} strokeWidth="1.5" strokeLinejoin="round"/>
-            <polygon points="11,7 16,17 6,17" fill={CORAL} opacity="0.25"/>
-          </svg>
-          <span style={{ fontSize: 11, letterSpacing: "0.4em", textTransform: "uppercase", color: CORAL, fontFamily: "Georgia, serif" }}>
-            Montalegre
-          </span>
-        </Link>
-        <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {[
-            { label: "História", href: "/historia" },
-            { label: "Eventos", href: "/eventos" },
-            { label: "Galeria", href: "/galeria" },
-            { label: "Como Chegar", href: "/como-chegar" },
-          ].map(item => (
-            <Link key={item.href} href={item.href} style={{
-              fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase",
-              color: "rgba(240,244,255,0.55)", textDecoration: "none", transition: "color 0.3s",
-            }}
-              onMouseEnter={e => (e.currentTarget.style.color = CORAL)}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,244,255,0.55)")}
-            >{item.label}</Link>
-          ))}
-          <Link href="/guide" style={{
-            fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase",
-            background: CORAL, color: "#fff",
-            padding: "10px 22px", textDecoration: "none", fontWeight: 600,
-            borderRadius: 4, transition: "background 0.3s",
-          }}
-            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = CORAL_LIGHT)}
-            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = CORAL)}
-          >Explorar →</Link>
-        </div>
-      </nav>
+      <GrainOverlay />
+      <Navbar />
 
       {/* HERO */}
       <section style={{ position: "relative", height: "100vh", minHeight: 700, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -153,15 +84,17 @@ export default function Home() {
           position: "absolute", inset: 0,
           backgroundImage: `url(${PHOTOS.hero})`,
           backgroundSize: "cover", backgroundPosition: "center 30%",
-          transform: `scale(1.08) translateY(${scrollY * 0.2}px)`,
-          transition: "transform 0.05s linear",
+          transform: `translateY(${scrollY * 0.2}px) scale(1.08)`,
+          backgroundColor: BG,
+          willChange: "transform",
+          backfaceVisibility: "hidden",
         }} />
         <div style={{
           position: "absolute", inset: 0,
           background: `linear-gradient(to bottom, rgba(7,13,26,0.2) 0%, rgba(7,13,26,0.55) 50%, rgba(7,13,26,0.92) 85%, ${BG} 100%)`,
         }} />
 
-        <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 24px", maxWidth: 900 }}>
+        <div style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "0 24px", maxWidth: 900 }}>
           <p style={{
             fontSize: 10, letterSpacing: "0.6em", textTransform: "uppercase", color: CORAL,
             marginBottom: 32,
@@ -232,6 +165,7 @@ export default function Home() {
           position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)",
           display: "flex", flexDirection: "column", alignItems: "center", gap: 10,
           opacity: loaded ? 0.5 : 0, transition: "opacity 1s ease 1.5s",
+          zIndex: 10,
         }}>
           <span style={{ fontSize: 9, letterSpacing: "0.5em", textTransform: "uppercase", color: CORAL }}>Scroll</span>
           <div style={{ width: 1, height: 52, background: `linear-gradient(to bottom, ${CORAL}, transparent)`, animation: "scrollPulse 2s ease-in-out infinite" }} />
@@ -314,45 +248,56 @@ export default function Home() {
         </section>
       ))}
 
-      {/* QUICK LINKS — Emojis grandes e coloridos */}
+      {/* QUICK LINKS — UI/UX Designer Refinement */}
       <section style={{ padding: "120px 48px", background: BG_MID }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 56 }}>
             <div style={{ width: 48, height: 2, background: CORAL, borderRadius: 2 }} />
             <span style={{ fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", color: CORAL }}>Explorar</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
+          <div className="bento-grid">
             {[
-              { href: "/historia", label: "História & Cultura", desc: "Origens medievais, o castelo, as bruxas e as tradições de Barroso", icon: "🏛️", color: "#f59e0b", bg: "rgba(245,158,11,0.08)", border: "rgba(245,158,11,0.2)" },
-              { href: "/eventos", label: "Eventos & Festivais", desc: "Sexta 13, Feira do Fumeiro, Carnaval e muito mais ao longo do ano", icon: "🎭", color: "#a855f7", bg: "rgba(168,85,247,0.08)", border: "rgba(168,85,247,0.2)" },
-              { href: "/galeria", label: "Galeria de Fotos", desc: "Imagens deslumbrantes da paisagem, castelo e vida local", icon: "📸", color: "#06b6d4", bg: "rgba(6,182,212,0.08)", border: "rgba(6,182,212,0.2)" },
-              { href: "/como-chegar", label: "Como Chegar", desc: "Rotas, transportes e tudo o que precisas para visitar Montalegre", icon: "🗺️", color: "#22c55e", bg: "rgba(34,197,94,0.08)", border: "rgba(34,197,94,0.2)" },
-              { href: "/guide", label: "Guia Interativo", desc: "Restaurantes, alojamentos, atrações e serviços em tempo real com mapa", icon: "📍", color: CORAL, bg: `${CORAL}12`, border: `${CORAL}30` },
-            ].map((item) => (
-              <Link key={item.href} href={item.href} style={{
-                display: "block", padding: "36px 32px",
-                background: item.bg,
-                border: `1px solid ${item.border}`,
-                textDecoration: "none", color: "inherit",
-                borderRadius: 12,
-                transition: "all 0.35s ease",
-                position: "relative", overflow: "hidden",
-              }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-5px)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = `0 20px 48px ${item.color}25`;
-                  (e.currentTarget as HTMLElement).style.borderColor = `${item.color}50`;
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.transform = "none";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                  (e.currentTarget as HTMLElement).style.borderColor = item.border;
+              { href: "/guide", label: "Guia Interativo", desc: "Mapa interativo com restaurantes, alojamentos, atrações e todos os serviços de Montalegre em tempo real. A sua viagem começa aqui.", icon: <MapPin strokeWidth={1.5} />, color: CORAL, isFeatured: true, bgImage: PHOTOS.natureza, tags: ["Principal", "Ao Vivo"] },
+              { href: "/historia", label: "História & Cultura", desc: "Origens medievais, o castelo, as bruxas e as tradições de Barroso", icon: <Castle strokeWidth={1.5} />, color: "#f59e0b", tags: ["Património"] },
+              { href: "/eventos", label: "Eventos & Festivais", desc: "Sexta 13, Feira do Fumeiro, Carnaval e muito mais ao longo do ano", icon: <Calendar strokeWidth={1.5} />, color: "#a855f7", tags: ["Cultura"] },
+              { href: "/como-chegar", label: "Como Chegar", desc: "Rotas detalhadas, transportes e tudo o que precisas para visitar a capital de Barroso", icon: <Route strokeWidth={1.5} />, color: "#22c55e", tags: ["Informação"] },
+              { href: "/galeria", label: "Galeria Visual", desc: "Imagens deslumbrantes da paisagem e vida local", icon: <ImageIcon strokeWidth={1.5} />, color: "#06b6d4", tags: ["Multimédia"] },
+            ].map((item, i) => (
+              <Link 
+                key={item.href} 
+                href={item.href} 
+                className={`bento-card bento-item-${i} ${item.isFeatured ? 'featured' : ''}`}
+                style={{ '--accent-color': item.color } as React.CSSProperties}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+                  e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
                 }}
               >
-                <div style={{ fontSize: 48, marginBottom: 16, lineHeight: 1 }}>{item.icon}</div>
-                <h3 style={{ fontFamily: "Georgia, serif", fontSize: 21, fontWeight: 400, color: "#f0f4ff", marginBottom: 10 }}>{item.label}</h3>
-                <p style={{ fontSize: 13, color: "rgba(240,244,255,0.45)", lineHeight: 1.7 }}>{item.desc}</p>
-                <div style={{ position: "absolute", bottom: 24, right: 24, fontSize: 16, color: item.color, opacity: 0.6 }}>→</div>
+                {item.bgImage && (
+                  <>
+                    <div className="bento-bg-image" style={{ backgroundImage: `url(${item.bgImage})` }} />
+                    <div className="bento-bg-overlay" />
+                  </>
+                )}
+                <div className="bento-header">
+                  <div className="bento-icon">{item.icon}</div>
+                  <div className="bento-tags">
+                    {item.tags.map(tag => (
+                      <span key={tag} className="bento-tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="bento-content">
+                  <h3 className="bento-title">{item.label}</h3>
+                  <p className="bento-desc">{item.desc}</p>
+                </div>
+                <div className="bento-arrow">
+                  <ArrowRight strokeWidth={1.5} />
+                </div>
+                <div className="bento-glow" />
               </Link>
             ))}
           </div>
@@ -388,71 +333,250 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{ borderTop: `1px solid ${CORAL}15`, padding: "40px 48px", background: BG_MID }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
-          {/* Marca */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <svg width="14" height="14" viewBox="0 0 22 22">
-              <polygon points="11,2 20,20 2,20" fill="none" stroke={CORAL} strokeWidth="1.5" strokeLinejoin="round" opacity="0.5"/>
-            </svg>
-            <span style={{ fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(240,244,255,0.25)" }}>Montalegre · Terra de Barroso</span>
-          </div>
-
-          {/* Links */}
-          <div style={{ display: "flex", gap: 24 }}>
-            {[
-              { label: "História", href: "/historia" },
-              { label: "Eventos", href: "/eventos" },
-              { label: "Galeria", href: "/galeria" },
-              { label: "Guia", href: "/guide" },
-            ].map(item => (
-              <Link key={item.href} href={item.href} style={{
-                fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase",
-                color: "rgba(240,244,255,0.25)", textDecoration: "none", transition: "color 0.3s"
-              }}
-                onMouseEnter={e => (e.currentTarget.style.color = CORAL)}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,244,255,0.25)")}
-              >{item.label}</Link>
-            ))}
-          </div>
-
-          {/* REDES SOCIAIS — SVGs reais */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(240,244,255,0.2)" }}>Siga-nos</span>
-            {[
-              { href: "https://www.facebook.com/MunicipioMontalegre", icon: <FacebookSVG />, color: "#1877f2", label: "Facebook" },
-              { href: "https://www.instagram.com/municipiomontalegre/", icon: <InstagramSVG />, color: "#e1306c", label: "Instagram" },
-              { href: "https://www.cm-montalegre.pt", icon: <WebSVG />, color: "#3b82f6", label: "Website" },
-            ].map(social => (
-              <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer"
-                title={social.label}
-                style={{
-                  width: 40, height: 40, borderRadius: 8,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  background: `${social.color}18`,
-                  border: `1px solid ${social.color}35`,
-                  color: social.color, textDecoration: "none",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.background = `${social.color}35`;
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.background = `${social.color}18`;
-                  (e.currentTarget as HTMLElement).style.transform = "none";
-                }}
-              >{social.icon}</a>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <style>{`
         @keyframes scrollPulse { 0%,100%{opacity:.5;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
         *{box-sizing:border-box;} html{scroll-behavior:smooth;} body{overflow-x:hidden;}
-        @media(max-width:900px){ nav>div:last-child{display:none;} }
+
+        /* BENTO GRID CSS */
+        .bento-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        @media (min-width: 768px) {
+          .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (min-width: 1024px) {
+          .bento-grid {
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 280px;
+          }
+          .bento-item-0 { grid-column: span 2; grid-row: span 2; }
+          .bento-item-1 { grid-column: span 1; grid-row: span 1; }
+          .bento-item-2 { grid-column: span 1; grid-row: span 1; }
+          .bento-item-3 { grid-column: span 2; grid-row: span 1; }
+          .bento-item-4 { grid-column: span 1; grid-row: span 1; }
+        }
+        
+        .bento-card {
+          display: flex;
+          flex-direction: column;
+          padding: 32px;
+          border-radius: 24px;
+          text-decoration: none;
+          color: inherit;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          background: rgba(255,255,255,0.02);
+          border: 1px solid rgba(255,255,255,0.05);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          z-index: 1;
+        }
+        
+        .bento-card:hover {
+          transform: translateY(-4px) scale(1.005);
+          background: rgba(255,255,255,0.04);
+          border-color: rgba(255,255,255,0.1);
+          box-shadow: 0 24px 48px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .bento-glow {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--accent-color) 0%, transparent 50%);
+          opacity: 0;
+          mix-blend-mode: screen;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+          z-index: -1;
+          filter: blur(40px);
+        }
+        .bento-card:hover .bento-glow {
+          opacity: 0.12;
+        }
+
+        .bento-card.featured {
+          background: linear-gradient(135deg, rgba(255,107,74,0.08) 0%, rgba(13,24,41,0.6) 100%);
+          border: 1px solid rgba(255,107,74,0.2);
+          justify-content: flex-end;
+          padding: 48px;
+        }
+        .bento-card.featured:hover {
+          background: linear-gradient(135deg, rgba(255,107,74,0.12) 0%, rgba(13,24,41,0.7) 100%);
+          border-color: rgba(255,107,74,0.35);
+          box-shadow: 0 32px 64px rgba(255,107,74,0.12), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .bento-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          width: 100%;
+          margin-bottom: auto;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .bento-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 14px;
+          background: rgba(255,255,255,0.04);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--accent-color, #fff);
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          border: 1px solid rgba(255,255,255,0.05);
+        }
+        .bento-icon > svg {
+          width: 24px;
+          height: 24px;
+        }
+        .featured .bento-icon {
+          width: 64px;
+          height: 64px;
+          border-radius: 18px;
+          background: rgba(255,107,74,0.1);
+          border-color: rgba(255,107,74,0.2);
+          margin-bottom: 32px;
+        }
+        .featured .bento-icon > svg {
+          width: 32px;
+          height: 32px;
+        }
+        .bento-card:hover .bento-icon {
+          transform: scale(1.1) rotate(-5deg);
+          background: rgba(255,255,255,0.08);
+        }
+        .featured:hover .bento-icon {
+          background: rgba(255,107,74,0.15);
+        }
+        
+        .bento-tags {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+        }
+        
+        .bento-tag {
+          font-size: 10px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          padding: 6px 12px;
+          border-radius: 20px;
+          background: rgba(255,255,255,0.05);
+          color: rgba(255,255,255,0.7);
+          border: 1px solid rgba(255,255,255,0.08);
+          backdrop-filter: blur(4px);
+        }
+        .featured .bento-tag {
+          background: rgba(255,107,74,0.1);
+          color: rgba(255,107,74,0.9);
+          border-color: rgba(255,107,74,0.2);
+        }
+        
+        .bento-content {
+          position: relative;
+          z-index: 2;
+          margin-top: 24px;
+        }
+        
+        .bento-title {
+          font-family: Georgia, serif;
+          font-size: 26px;
+          font-weight: 300;
+          color: #f0f4ff;
+          margin: 0 0 12px 0;
+          transition: color 0.3s ease;
+          letter-spacing: -0.01em;
+        }
+        .featured .bento-title {
+          font-size: 44px;
+          margin-bottom: 16px;
+          line-height: 1.1;
+        }
+        .bento-card:hover .bento-title {
+          color: var(--accent-color, #fff);
+        }
+        
+        .bento-desc {
+          font-size: 15px;
+          color: rgba(240,244,255,0.55);
+          line-height: 1.6;
+          margin: 0;
+          transition: color 0.3s ease;
+        }
+        .featured .bento-desc {
+          font-size: 17px;
+          max-width: 80%;
+          color: rgba(240,244,255,0.7);
+        }
+        .bento-card:hover .bento-desc {
+          color: rgba(240,244,255,0.65);
+        }
+        
+        .bento-arrow {
+          position: absolute;
+          bottom: 32px;
+          right: 32px;
+          color: var(--accent-color);
+          opacity: 0;
+          transform: translateX(-15px) scale(0.8);
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(255,255,255,0.05);
+          z-index: 2;
+        }
+        .featured .bento-arrow {
+          bottom: 48px;
+          right: 48px;
+          width: 48px;
+          height: 48px;
+          background: rgba(255,107,74,0.1);
+          border-color: rgba(255,107,74,0.2);
+        }
+        .bento-card:hover .bento-arrow {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+          background: rgba(255,255,255,0.1);
+        }
+        .featured:hover .bento-arrow {
+          background: rgba(255,107,74,0.2);
+        }
+        
+        .bento-bg-image {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          opacity: 0.15;
+          transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+          z-index: 0;
+        }
+        .bento-bg-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(7,13,26,0.95) 0%, rgba(7,13,26,0.4) 100%);
+          z-index: 0;
+        }
+        .bento-card:hover .bento-bg-image {
+          transform: scale(1.06);
+          opacity: 0.25;
+        }
       `}</style>
     </div>
   );
