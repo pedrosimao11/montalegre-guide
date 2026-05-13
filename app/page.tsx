@@ -51,7 +51,7 @@ const SCROLL_SECTIONS = [
     id: "chegas",
     label: "Tradição Equestre · Coração de Barroso",
     title: "Chegas de Bois\nPaixão Barrosã",
-    text: "As Chegas de Bois são a mais genuína tradição de Barroso. Um combate de força entre touros que atrai milhares de pessoas, num espetáculo único onde a terra treme e a paixão fala mais alto.",
+    text: "As Chegas de Bois são a mais genuína tradição de Barroso. Um combate de força entre bois que atrai milhares de pessoas ao longo do ano, num espetáculo único onde a terra treme e a paixão fala mais alto.",
     photo: PHOTOS.chegas,
   },
 ];
