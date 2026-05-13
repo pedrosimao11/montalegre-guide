@@ -190,7 +190,7 @@ export default function Home() {
               textAlign: "center", padding: "36px 20px",
               borderRight: i < 3 ? `1px solid ${CORAL}18` : "none",
             }}>
-              <p style={{ fontFamily: "Georgia, serif", fontSize: "clamp(44px, 5.5vw, 76px)", color: CORAL, margin: 0, lineHeight: 1.1, fontWeight: 300 }}>
+              <p style={{ fontFamily: "Georgia, serif", fontSize: "clamp(44px, 5.5vw, 76px)", color: CORAL, margin: 0, lineHeight: 1.3, fontWeight: 300 }}>
                 {item.num}<span style={{ fontSize: "0.4em", opacity: 0.7 }}>{item.unit}</span>
               </p>
               <p style={{ fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(240,244,255,0.3)", marginTop: 10 }}>
