@@ -107,7 +107,7 @@ export default function Home() {
           <h1 style={{
             fontFamily: "Georgia, 'Times New Roman', serif",
             fontSize: "clamp(48px, 10vw, 100px)",
-            lineHeight: 1.1, fontWeight: 400, letterSpacing: "-0.03em",
+            lineHeight: 1.2, fontWeight: 400, letterSpacing: "-0.03em",
             opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(50px)",
             transition: "all 1.1s cubic-bezier(0.16,1,0.3,1) 0.35s",
             marginBottom: 24,
