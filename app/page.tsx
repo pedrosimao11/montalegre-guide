@@ -305,16 +305,24 @@ export default function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section style={{ position: "relative", padding: "140px 48px", textAlign: "center", overflow: "hidden", borderTop: `1px solid ${CORAL}18` }}>
+      <section style={{ position: "relative", padding: "140px 48px", textAlign: "center", borderTop: `1px solid ${CORAL}18` }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${PHOTOS.cta})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.1 }} />
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${CORAL}15 0%, transparent 70%)` }} />
         <div style={{ position: "relative" }}>
           <p style={{ fontSize: 10, letterSpacing: "0.5em", textTransform: "uppercase", color: CORAL, marginBottom: 24 }}>Pronto para explorar?</p>
-          <h2 style={{
-            fontFamily: "Georgia, serif", fontSize: "clamp(44px, 8vw, 96px)", fontWeight: 300,
-            lineHeight: 1, letterSpacing: "-0.02em", marginBottom: 28,
-            background: `linear-gradient(135deg, #f0f4ff 0%, ${CORAL} 50%, #f0f4ff 100%)`,
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+         <h2 style={{
+  fontFamily: "Georgia, serif",
+  fontSize: "clamp(44px, 8vw, 96px)",
+  fontWeight: 300,
+  lineHeight: 1.15,
+  letterSpacing: "-0.02em",
+  marginBottom: 28,
+  paddingBottom: "0.15em",
+  display: "inline-block",   // ← CHAVE: faz o clip respeitar o padding
+  background: `linear-gradient(135deg, #f0f4ff 0%, ${CORAL} 50%, #f0f4ff 100%)`,
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
           }}>
             Descubra o melhor<br />de Montalegre
           </h2>
